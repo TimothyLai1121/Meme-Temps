@@ -36,7 +36,7 @@ fetch('https://api.imgflip.com/get_memes')
 		}
 		// using same format above on length -1 for back and remain length without numerical for forward //
 		// negative start with -1, positive start with 0 that's why //
-		previousButton.addEventListener("click", function() {
+		previousButton.addEventListener("click", function () {
 			currentMemeIndex--;
 			if (currentMemeIndex < 0) {
 				currentMemeIndex = memes.length - 1;
@@ -44,7 +44,7 @@ fetch('https://api.imgflip.com/get_memes')
 			displayMeme(memes, currentMemeIndex);
 		});
 		// positive number, leave it 0 as 1 
-		nextButton.addEventListener("click", function() {
+		nextButton.addEventListener("click", function () {
 			currentMemeIndex++;
 			if (currentMemeIndex >= memes.length) {
 				currentMemeIndex = 0;
@@ -54,19 +54,56 @@ fetch('https://api.imgflip.com/get_memes')
 	})
 	.catch(err => console.error(err));
 
-	function displayMeme(memes, index) {
+function displayMeme(memes, index) {
+	const memeContainer = document.getElementById("memeContainer");
+	memeContainer.innerHTML = `<img src="${memes[index].url}" alt="Meme">`;
+	// adding to local storage //
+	memeContainer.addEventListener("click", function () {
+		localStorage.setItem("selectedMemeURL", memes[index].url);
+	});
+}
+
+/* Adding savedButton */
+
+const savedButton = document.getElementById("savedButton");
+savedButton.addEventListener("click", function () {
+	const selectedMemeURL = localStorage.getItem("selectedMemeURL");
+	localStorage.setItem("selectedMemeURL", selectedMemeURL);
+	const savedPicturesContainer = document.querySelector(".savedPicturesContainer");
+	const savedPictureButtons = document.querySelectorAll(".savedPictureButton");
+	let urlExists = false;
+	for (const savedPictureButton of savedPictureButtons) {
+		if (savedPictureButton.innerHTML === selectedMemeURL) {
+			urlExists = true;
+			break;
+		}
+	}
+	if (!urlExists) {
+		const savedPictureButton = document.createElement("button");
+		savedPictureButton.innerHTML = selectedMemeURL;
+		savedPictureButton.classList.add("savedPictureButton");
+		savedPicturesContainer.appendChild(savedPictureButton);
+	}
+});
+
+
+/* savedPicturesContainer */
+
+
+const savedPicturesContainer = document.querySelector(".savedPicturesContainer");
+savedPicturesContainer.addEventListener("click", function (event) {
+	if (event.target.classList.contains("savedPictureButton")) {
+		const selectedMemeURL = event.target.innerHTML;
 		const memeContainer = document.getElementById("memeContainer");
-		memeContainer.innerHTML = `<img src="${memes[index].url}" alt="Meme">`;
-		// adding to local storage //
-		memeContainer.addEventListener("click", function() {
-		  localStorage.setItem("selectedMemeURL", memes[index].url);
-		});
-	  }
+		memeContainer.innerHTML = `<img src="${selectedMemeURL}" alt="Meme">`;
+	}
+});
 
-    
- // image. //
 
- // Advices //
+
+// image. //
+
+// Advices //
 // "https://api.adviceslip.com/advice"
 
 //button id =btnAdvices //
@@ -88,4 +125,60 @@ function getAdvice() {
 			const advice = data.slip.advice;
 			advices.innerText = advice;
 		});
+}
+
+// Modal //
+/*
+var modal = document.querySelector('.modal');
+var closeButtons = document.querySelectorAll('.close-modal');
+// set open modal behaviour
+
+// set close modal behaviour
+for (i = 0; i < closeButtons.length; ++i) {
+  closeButtons[i].addEventListener('click', function() {
+	modal.classList.toggle('modal-open');
+	});
+}
+// close modal if clicked outside content area
+document.querySelector('.modal-inner').addEventListener('click', function() {
+  modal.classList.toggle('modal-open');
+});
+// prevent modal inner from closing parent when clicked
+document.querySelector('.modal-content').addEventListener('click', function(e) {
+	e.stopPropagation();
+});
+// Allows escape and space key to close for accessiblity purposes. 
+document.addEventListener("keydown", function(event) {
+	if (event.key === "Escape" || event.key === " ") {
+		modal.classList.toggle('modal-open');
+	}
+}); 
+*/
+
+/* Modal Fixing */
+var modal = document.getElementById("modal");
+var triggerButton = document.getElementById("openModalButton");
+
+// Get the close button
+var closeButton = document.getElementsByClassName("close-button")[0];
+
+// When the user clicks the trigger button, open the modal
+triggerButton.onclick = function () {
+	modal.style.display = "block";
+}
+
+// When the user clicks the close button, close the modal
+closeButton.onclick = function () {
+	modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside the modal, close it
+window.onclick = function (event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
+}
+// when page first appear. 
+window.onload = function () {
+	modal.style.display = "block";
 }

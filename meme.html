@@ -7,42 +7,103 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <link rel="stylesheet" href="./assets/css/skeleton.css" />
 
     <title>My Website</title>
   </head>
   <body>
-    <div>
-        <div class="memeCards centered">
-            <div class="topBar">
-                <h1 class="textOne"></h1>
-              </div>
+    <div class="row">
+      <div class="memeCards six columns centered">
+        <div class="topBar">
+          <h1 class="textOne"></h1>
+        </div>
         <!-- adding previousBtn -->
         <!-- img -->
         <div class="imgHolder" id="memeContainer">
           <!-- we adding memeContainer ID -->
-          <img id="memeImage" src="" alt="Meme"/>
+          <img id="memeImage" src="" alt="Meme" />
           <!-- caption id for fetch URL: https://api.imgflip.com/caption_image -->
-          
         </div>
         <!-- Advices -->
         <div class="adviceBar">
-        <p class="advice" id="advices">Advices</p>
-            </div>
-        <hr>
+          <p class="advice" id="advices">Advices</p>
+        </div>
+        
         <!-- adding centered class -->
         <div class="bottom-buttons">
-            <button id="previousBtn" class="button-primary">Previous</button>
-            
-            <button id="savedButton" class="button-primary">Saved</button>
-            <button id="btnAdvices" class="button-primary">Advice</button>
-            <button id="nextBtn" class="button-primary">Next</button>
+          <button id="previousBtn" class="button-primary">Previous</button>
+          <!-- Carson Modal -->
+          <button id="openModalButton" class="button-primary">
+            About Us
+          </button>
+
+          <button id="savedButton" class="button-primary">Saved</button>
+          <button id="btnAdvices" class="button-primary">Advice</button>
+          <button id="nextBtn" class="button-primary">Next</button>
         </div>
       </div>
 
+      <div class="savedPictures six columns">
+          <h2>Saved Templates</h2>
+          <div class="savedPicturesContainer">
+            <!-- dynamically generated saved pictures will go here -->
+          </div>
+          <div class="adviceBar">
+            <p class="advice" id="advices">Advices</p>
+          </div>
+        </div>
+      </div>
+      
+
+      
 
 
+      <!-- Modal -->
+      <!-- 
+      <div class="modal modal-open">
+        <div class="modal-inner">
+          <div class="modal-content">
+            <div class="modal-close-icon">
+              <a href="javascript:void(0)" class="close-modal"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </div>
+            <div class="modal-content-inner">
+              <h4>Welcome to the Rebooters Meme Generator</h4>
+              <p> The following application is meant to create laughable combinations of images and advice quotes. Our goal is to do as much as possible with the technologies we know and 
+                continue to further develop the project in the future. Our future goal is for 'Meme Generator' to be a funcitoning Meme API with downloadable images. Enjoy! </p>  
+            </div>
+            <hr class="modal-buttons-seperator">
+            <div class="modal-buttons">
+              <button class="button close-modal">Cancel</button>
+              <button class="button button-primary close-modal">OK</button>
+            </div>
+          </div>
+        </div>
+        </div>
+      -->
+      <!-- Modal Attempt Fixing  Carson -->
+
+      <!-- Modal content -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h4>Welcome to the Rebooters Meme Generator</h4>
+          <p>
+            The following application is meant to create laughable combinations
+            of images and advice quotes. Our goal is to do as much as possible
+            with the technologies we know and continue to further develop the
+            project in the future. Our future goal is for 'Meme Generator' to be
+            a funcitoning Meme API with downloadable images. Enjoy!
+          </p>
+        </div>
+      </div>
     </div>
 
     <script src="./assets/scripts/script.js"></script>
@@ -52,9 +113,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script>
-
-        
-    </script>
+    <script></script>
   </body>
 </html>
