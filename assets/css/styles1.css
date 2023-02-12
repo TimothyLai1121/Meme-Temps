@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Ahom&display=swap");
+
+/* font-family: 'Noto Serif Ahom', serif; */
+
+:root {
+  --title: "Noto Serif Ahom", serif;
+  --grey1: #f3efe0;
+  --darkgrey1: #434242;
+  --black1: #222222;
+  --darkgreen1: #22a39f;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--black1);
+}
+
+body {
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80%;
+  max-width: 1200px;
+  background-color: var(--darkgreen1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.memeCards {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-right: 1px solid var(--grey1);
+  padding: 20px;
+}
+
+.savedPictures {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--grey1);
+  padding: 10px;
+}
+
+.savedPicturesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 80%;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.savedPictureButton {
+  width: 100%;
+  max-width: 300px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: var(--darkgreen1);
+  color: white;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+#memeContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+}
+
+#memeContainer img {
+  height: auto;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 5px;
+}
+
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.button-primary {
+  background-color: var(--lightgreen1);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .row {
+    height: 600px;
+  }
+
+  .memeCards {
+    height: 100%;
+    border-right: none;
+  }
+
+  .savedPictures {
+    height: 100%;
+  }
+
+  #memeContainer {
+    height: 100%;
+    width: 60%;
+  }
+
+  .savedPicturesContainer {
+    max-height: 100%;
+  }
+}

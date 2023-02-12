@@ -19,53 +19,79 @@
 
     <title>My Website</title>
   </head>
+
   <body>
-    <div class="row">
-      <div class="memeCards six columns centered">
-        <div class="topBar">
-          <h1 class="textOne"></h1>
-        </div>
-        <!-- adding previousBtn -->
-        <!-- img -->
-        <div class="imgHolder" id="memeContainer">
-          <!-- we adding memeContainer ID -->
-          <img id="memeImage" src="" alt="Meme" />
-          <!-- caption id for fetch URL: https://api.imgflip.com/caption_image -->
-        </div>
-        <!-- Advices -->
-        <div class="adviceBar">
-          <p class="advice" id="advices">Advices</p>
+    <div class="container tablet">
+      <div class="row">
+       
+       
+
+       
+
+        <div class="advicesSaved three columns">
+       
+          <div class="advicesSavedContainer">
+            <!-- dynamically generated saved advices will go here -->
+          </div>
         </div>
         
-        <!-- adding centered class -->
-        <div class="bottom-buttons">
-          <button id="previousBtn" class="button-primary">Previous</button>
-          <!-- Carson Modal -->
-          <button id="openModalButton" class="button-primary">
-            About Us
-          </button>
+        <div class="memeCards six columns">
+          
+  
+      
+          <!-- adding previousBtn -->
+          <!-- img -->
+          <div class="imgHolder" id="memeContainer">
+            <!-- we adding memeContainer ID -->
+            <img id="memeImage" src="" alt="Meme" />
+            <!-- caption id for fetch URL: https://api.imgflip.com/caption_image -->
+          </div>
+          <!-- Advices -->
+          <div class="adviceBar">
+            <p class="advice" id="advices">
+              We added Nav Keys, ID cards for our modal, saved icons once you
+              click on meme pic, and # for advices
+            </p>
+          </div>
 
-          <button id="savedButton" class="button-primary">Saved</button>
-          <button id="btnAdvices" class="button-primary">Advice</button>
-          <button id="nextBtn" class="button-primary">Next</button>
+          <!-- adding centered class -->
+          
         </div>
-      </div>
 
-      <div class="savedPictures six columns">
-          <h2>Saved Templates</h2>
+        <div class="savedPictures three columns">
+          <h2></h2>
           <div class="savedPicturesContainer">
             <!-- dynamically generated saved pictures will go here -->
           </div>
-          <div class="adviceBar">
-            <p class="advice" id="advices">Advices</p>
-          </div>
         </div>
       </div>
-      
+      </div>
+    </div>
 
-      
+       <!-- adding centered class -->
+       <div class="bottom-buttons centered">
+        <button id="previousBtn" class="button-primary" title="Previous Meme">
+          <i class="fa-solid fa-backward"></i>
+        </button>
+        <!-- Carson Modal -->
+        <button id="openModalButton" class="button-primary" title="About Us">
+          <i class="fa-solid fa-address-card"></i>
+        </button>
 
+        <button id="savedButton" class="button-primary" title="Save Meme | Make sure you click on img and press save">
+          <i class="fa-solid fa-floppy-disk"></i>
+        </button>
+        <button id="btnAdvices" class="button-primary" title="Generate Advices">
+          <i class="fa-solid fa-hashtag"></i>
+        </button>
 
+        <button id="adviceSavedButton" class="button-primary" title="Saving Quotes">
+          <i class="fa-solid fa-quote-left"></i>
+
+        <button id="nextBtn" class="button-primary" title="Next Meme">
+          <i class="fa-solid fa-forward"></i>
+        </button>
+      </div>
       <!-- Modal -->
       <!-- 
       <div class="modal modal-open">
@@ -89,7 +115,7 @@
         </div>
       -->
       <!-- Modal Attempt Fixing  Carson -->
-
+      
       <!-- Modal content -->
       <div id="modal" class="modal">
         <div class="modal-content">
@@ -104,7 +130,7 @@
           </p>
         </div>
       </div>
-    </div>
+      <!-- Modal Attempt Fixing  Carson --> 
 
     <script src="./assets/scripts/script.js"></script>
     <script
