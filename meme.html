@@ -17,28 +17,18 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <link rel="stylesheet" href="./assets/css/skeleton.css" />
 
-    <title>My Website</title>
+    <title></title>
   </head>
 
-  <body>
-    <div class="container tablet">
+  <body class="tablet">
+    <header>
+      <h1>Meme Generator | Rebooters</h1>
+    </header>
+
+    <div class="container">
       <div class="row">
-       
-       
-
-       
-
-        <div class="advicesSaved three columns">
-       
-          <div class="advicesSavedContainer">
-            <!-- dynamically generated saved advices will go here -->
-          </div>
-        </div>
-        
-        <div class="memeCards six columns">
-          
-  
-      
+        <!-- Left Columns -->
+        <div class="memeCards eight columns">
           <!-- adding previousBtn -->
           <!-- img -->
           <div class="imgHolder" id="memeContainer">
@@ -47,53 +37,55 @@
             <!-- caption id for fetch URL: https://api.imgflip.com/caption_image -->
           </div>
           <!-- Advices -->
-          <div class="adviceBar">
-            <p class="advice" id="advices">
-              We added Nav Keys, ID cards for our modal, saved icons once you
-              click on meme pic, and # for advices
-            </p>
-          </div>
 
           <!-- adding centered class -->
-          
         </div>
-
-        <div class="savedPictures three columns">
+        <!-- Right Columns -->
+        <div class="savedPictures four columns">
           <h2></h2>
           <div class="savedPicturesContainer">
             <!-- dynamically generated saved pictures will go here -->
           </div>
         </div>
       </div>
-      </div>
     </div>
 
-       <!-- adding centered class -->
-       <div class="bottom-buttons centered">
-        <button id="previousBtn" class="button-primary" title="Previous Meme">
-          <i class="fa-solid fa-backward"></i>
-        </button>
-        <!-- Carson Modal -->
-        <button id="openModalButton" class="button-primary" title="About Us">
-          <i class="fa-solid fa-address-card"></i>
-        </button>
+    <div class="bottom-buttons centered">
+      <button id="previousBtn" class="button-primary" title="Previous Meme">
+        <i class="fa-solid fa-backward"></i>
+      </button>
+      <!-- Carson Modal -->
+      <button id="openModalButton" class="button-primary" title="About Us">
+        <i class="fa-solid fa-address-card"></i>
+      </button>
 
-        <button id="savedButton" class="button-primary" title="Save Meme | Make sure you click on img and press save">
-          <i class="fa-solid fa-floppy-disk"></i>
-        </button>
-        <button id="btnAdvices" class="button-primary" title="Generate Advices">
-          <i class="fa-solid fa-hashtag"></i>
-        </button>
+      <button
+        id="savedButton"
+        class="button-primary"
+        title="Save Meme | Make sure you click on img and press save"
+      >
+        <i class="fa-solid fa-floppy-disk"></i>
+      </button>
+      <button id="btnAdvices" class="button-primary" title="Generate Advices">
+        <i class="fa-solid fa-quote-left"></i>
+      </button>
 
-        <button id="adviceSavedButton" class="button-primary" title="Saving Quotes">
-          <i class="fa-solid fa-quote-left"></i>
+      <button id="nextBtn" class="button-primary" title="Next Meme">
+        <i class="fa-solid fa-forward"></i>
+      </button>
+    </div>
 
-        <button id="nextBtn" class="button-primary" title="Next Meme">
-          <i class="fa-solid fa-forward"></i>
-        </button>
-      </div>
-      <!-- Modal -->
-      <!-- 
+    <div class="adviceBar">
+      <p class="advice" id="advices">
+        We added Nav Keys, ID cards for our modal, saved icons once you click on
+        meme pic, and # for advices
+      </p>
+    </div>
+
+    <!-- adding centered class -->
+
+    <!-- Modal -->
+    <!-- 
       <div class="modal modal-open">
         <div class="modal-inner">
           <div class="modal-content">
@@ -114,23 +106,23 @@
         </div>
         </div>
       -->
-      <!-- Modal Attempt Fixing  Carson -->
-      
-      <!-- Modal content -->
-      <div id="modal" class="modal">
-        <div class="modal-content">
-          <span class="close-button">&times;</span>
-          <h4>Welcome to the Rebooters Meme Generator</h4>
-          <p>
-            The following application is meant to create laughable combinations
-            of images and advice quotes. Our goal is to do as much as possible
-            with the technologies we know and continue to further develop the
-            project in the future. Our future goal is for 'Meme Generator' to be
-            a funcitoning Meme API with downloadable images. Enjoy!
-          </p>
-        </div>
+    <!-- Modal Attempt Fixing  Carson -->
+
+    <!-- Modal content -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h4>Welcome to the Rebooters Meme Generator</h4>
+        <p>
+          The following application is meant to create laughable combinations of
+          images and advice quotes. Our goal is to do as much as possible with
+          the technologies we know and continue to further develop the project
+          in the future. Our future goal is for 'Meme Generator' to be a
+          funcitoning Meme API with downloadable images. Enjoy!
+        </p>
       </div>
-      <!-- Modal Attempt Fixing  Carson --> 
+    </div>
+    <!-- Modal Attempt Fixing  Carson -->
 
     <script src="./assets/scripts/script.js"></script>
     <script

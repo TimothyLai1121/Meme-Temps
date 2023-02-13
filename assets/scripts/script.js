@@ -63,53 +63,6 @@ function displayMeme(memes, index) {
   });
 }
 
-/* Adding savedButton */
-
-const savedButton = document.getElementById("savedButton");
-savedButton.addEventListener("click", function () {
-  const selectedMemeURL = localStorage.getItem("selectedMemeURL");
-  localStorage.setItem("selectedMemeURL", selectedMemeURL);
-  const savedPicturesContainer = document.querySelector(
-    ".savedPicturesContainer"
-  );
-  const savedPictureButtons = document.querySelectorAll(".savedPictureButton");
-  let urlExists = false;
-  for (const savedPictureButton of savedPictureButtons) {
-    if (savedPictureButton.innerHTML === selectedMemeURL) {
-      urlExists = true;
-      break;
-    }
-  }
-  if (!urlExists) {
-    const savedPictureButton = document.createElement("button");
-    savedPictureButton.innerHTML = selectedMemeURL;
-    savedPictureButton.classList.add("savedPictureButton");
-    savedPicturesContainer.appendChild(savedPictureButton);
-  }
-});
-
-
-/* Adding downloadButton */
-
-
-  
-
-
-/* savedPicturesContainer */
-
-const savedPicturesContainer = document.querySelector(
-  ".savedPicturesContainer"
-);
-savedPicturesContainer.addEventListener("click", function (event) {
-  if (event.target.classList.contains("savedPictureButton")) {
-    const selectedMemeURL = event.target.innerHTML;
-    const memeContainer = document.getElementById("memeContainer");
-    memeContainer.innerHTML = `<img src="${selectedMemeURL}" alt="Meme">`;
-  }
-});
-// adding eventlistener for arrow key left and right //
-// image. //
-
 // Advices //
 // "https://api.adviceslip.com/advice"
 
@@ -131,12 +84,92 @@ function getAdvice() {
     .then((response) => response.json())
     .then((data) => {
       const advice = data.slip.advice;
-	  advices.innerText = "";
+      advices.innerText = "";
       advices.innerText = advice;
-	})
+
+      const uniqueKey = `advice_${Date.now()}`;
+      localStorage.setItem(uniqueKey, advice);
+    })
     .catch((err) => console.error(err));
 }
 
+/*
+document.addEventListener("DOMContentLoaded", function() {
+	const adviceSavedButton = document.querySelector("#adviceSavedButton");
+	adviceSavedButton.addEventListener("click", saveAdvice);
+  
+  });
+  
+
+function saveAdvice() {
+	const adviceText = advices.innerText;
+	const adviceElement = document.createElement("p");
+	adviceElement.innerText = adviceText;
+	const advicesSavedContainer = document.querySelector(".advicesSavedContainer");
+	advicesSavedContainer.appendChild(adviceElement);
+}
+*/
+
+/* Adding savedButton */
+const savedButton = document.getElementById("savedButton");
+const savedPicturesContainer = document.querySelector(
+  ".savedPicturesContainer"
+);
+
+// adding event listener to save the currently displayed meme image and advice to the local storage
+savedButton.addEventListener("click", function () {
+  const memeImage = document.querySelector("#memeContainer img");
+  const advice = document.querySelector("#advices").innerText;
+  if (memeImage) {
+    const selectedMemeURL = memeImage.src;
+    const uniqueKey = `meme_${Date.now()}`;
+    localStorage.setItem(uniqueKey + "_url", selectedMemeURL);
+    localStorage.setItem(uniqueKey + "_advice", advice);
+    const savedPictureButton = document.createElement("button");
+    // innerHTML, change the text of the button to the number of saved pictures //
+    savedPictureButton.innerHTML = `Meme # ${
+      savedPicturesContainer.children.length + 1
+    }`;
+    savedPictureButton.classList.add("savedPictureButton");
+    savedPictureButton.dataset.key = uniqueKey; // store the unique key in a data attribute
+    savedPictureButton.addEventListener("click", function () {
+      const selectedMemeURL = localStorage.getItem(uniqueKey + "_url");
+      const selectedAdvice = localStorage.getItem(uniqueKey + "_advice");
+      const memeContainer = document.getElementById("memeContainer");
+      const advices = document.querySelector("#advices");
+
+      memeContainer.innerHTML = `<img src="${selectedMemeURL}" alt="Meme">`;
+      advices.innerText = selectedAdvice;
+    });
+    savedPicturesContainer.appendChild(savedPictureButton);
+  }
+});
+
+// adding event listener to retrieve the saved meme and advice when a saved picture button is clicked
+savedPicturesContainer.addEventListener("click", function (event) {
+  if (event.target.classList.contains("savedPictureButton")) {
+    const uniqueKey = event.target.dataset.key;
+    const selectedMemeURL = localStorage.getItem(uniqueKey + "_url");
+    const selectedAdvice = localStorage.getItem(uniqueKey + "_advice");
+    const memeContainer = document.getElementById("memeContainer");
+    const advices = document.querySelector("#advices");
+
+    memeContainer.innerHTML = `<img src="${selectedMemeURL}" alt="Meme">`;
+    advices.innerText = selectedAdvice;
+  }
+});
+
+/* Adding savedButton */
+
+// adding eventlistener for arrow key left and right //
+// image. //
+
+// Advices //
+// "https://api.adviceslip.com/advice"
+
+//button id =btnAdvices //
+
+/*
 document.addEventListener("DOMContentLoaded", function() {
 	const adviceSavedButton = document.querySelector("#adviceSavedButton");
 	adviceSavedButton.addEventListener("click", saveAdvice);

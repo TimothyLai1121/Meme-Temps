@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+/* font-family: 'Amatic SC', cursive; */
+
 :root {
   /* primary color */
   --whiteX: #ffffff;
@@ -9,11 +12,91 @@
   --darkpurpleX: #2d3250;
   /* button and text color */
   --buttonX: #f9b17a;
+  /* font-family: 'Amatic SC', cursive; */
+  --titleFont: 'Amatic SC', cursive;
 }
 
 body {
   background-color: var(--darkpurpleX);
+  ;
 }
+
+
+
+header {
+  background-color: var(--buttonX);
+  color: var(--whiteX);
+  padding: 20px;
+  margin: 10px 474px 20px 474px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+header:hover {
+  transform: translateY(-5px);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+header:hover {
+  animation: bounce 0.5s ease-in-out;
+}
+
+
+
+
+header h1 {
+  font-size: 25px;
+  font-family: var(--titleFont);
+  letter-spacing: 0;
+  
+  padding-bottom: 5px;
+  position: relative;
+  text-align:center;
+}
+
+
+header h1:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 55px;
+  background-color: var(--lightpurpleX);
+  left:50%; margin-left:-140px;
+  transition: width 0.2s ease-in-out;
+}
+header h1:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: 1px;
+  width: 95%;
+  max-width: 255px;
+  background-color: var(--lightpurpleX);
+  left:50%; margin-left:-120px;
+  transition: width 0.2s ease-in-out;
+}
+
+header h1:hover:before {
+  width: 70px;
+}
+
+header h1:hover:after {
+  width: 105%;
+  max-width: 300px;
+}
+
+
 
 /* Modal */
 .modal {
@@ -65,8 +148,11 @@ body {
   margin-bottom: 20px;
   color: var(--whiteX);
 }
-
 /*  container */
+/*  container */
+/*  container */
+
+
 
 .row {
   display: flex;
@@ -84,9 +170,9 @@ body {
   border: 3px solid var(--lightpurpleX);
   background-color: var(--purpleX);
   box-shadow: 0 5px 5px rgba(249, 177, 122, 0.7);
-
-  padding-top: 20px;
-  padding-bottom: 30px;
+  padding: 0px 10px 10px 10px;
+  
+  
 }
 
 .advicesSaved {
@@ -100,10 +186,11 @@ body {
 }
 
 .imgHolder {
-  height: 600px !important;
-  width: 400px;
+  height: 640px !important;
+  width: 480px;
   overflow: hidden;
-  margin-left: 30px;
+  margin-left: 60px;
+  margin-top: 10px;
 
   position: relative;
   display: flex;
@@ -111,8 +198,8 @@ body {
 }
 
 .imgHolder img {
-  width: 400px !important;
-  height: 600px !important;
+  width: 480px !important;
+  height: 640px !important;
   object-fit: fill;
 }
 
@@ -147,8 +234,61 @@ body {
   font-size: 20px;
   width: 7%;
   cursor: pointer;
-  transform: rotate(-2deg);
+  margin-top: 100px;
+  transition: transform 0.2s ease-in-out;
 }
+
+#previousBtn:hover,
+#nextBtn:hover,
+#openModalButton:hover,
+#adviceSavedButton:hover,
+#btnAdvices:hover,
+#savedButton:hover {
+  transform: scale(1.1);
+}
+
+#previousBtn:active,
+#nextBtn:active,
+#openModalButton:active,
+#adviceSavedButton:active,
+#btnAdvices:active,
+#savedButton:active {
+  transform: scale(0.9);
+}
+
+
+.savedPictureButton {
+  background-color: var(--buttonX);
+  width: 90%;
+  font-size: 9px;
+  color: var(--whiteX);
+  display: flex;
+  position: relative;
+  margin: 5px 10px 5px 5px;
+  text-align: center;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.savedPictureButton:hover {
+  transform: translateY(-5px);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.savedPictureButton:hover {
+  animation: bounce 0.5s ease-in-out;
+}
+
 
 .savedPicturesContainer {
   height: auto;
@@ -157,7 +297,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
-  max-height: 750px;
+  max-height: 600px;
 }
 
 .savedPictures {
@@ -167,17 +307,7 @@ body {
   box-shadow: 0 5px 5px rgba(249, 177, 122, 0.7);
 }
 
-.savedPictureButton {
-  background-color: var(--buttonX);
-  border: 0 solid #e5e7eb;
-  box-sizing: border-box;
-  color: var(--whiteX);
-  font-size: 10px;
-  text-center: center;
-  margin-top: 10px;
-  margin-right: 4px;
-  border-radius: 0 0 50px;
-}
+
 
 .advicesSavedContainer {
   height: auto;
@@ -206,11 +336,34 @@ body {
 
 
 .adviceBar {
-  background-color: var(--buttonX);
+  background-color: var(--lightpurpleX);
   color: var(--whiteX);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 15px;
   text-align: center;
-  margin-top: 20px;
-  padding-top: 5px;
-  font-size: 14px;
+  line-height: 1.5;
+  font-size: 15px;
   font-style: italic;
+  margin: 25px 480px 130px 480px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.adviceBar:hover {
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
